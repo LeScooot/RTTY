@@ -10,7 +10,8 @@ void setup() {
   Serial.begin(9600);
 }
 
-void square_wave(int pin, int frequency);
+// void square_wave(int pin, int frequency);
+void square_wave_tone(int frequency);
 
 void loop() {
   if(counter%2 == 0){
@@ -21,7 +22,10 @@ void loop() {
   }
   counter++;
 }
-
+void square_wave_tone(int frequency){
+  tone(IR, frequency);
+  delay(timing * 1000);
+}
 // void square_wave(int pin, int frequency){
 //   int currTime = millis();
 //   int stoptime = currTime + 
@@ -32,8 +36,5 @@ void loop() {
 //   delay(period/2);
 // }
 
-void square_wave_tone(int frequency){
-  tone(IR, frequency);
-  delay(timing * 1000);
-}
+
 
