@@ -14,7 +14,6 @@ void setup() {
   float calculatedOCR = (16000000.0 / (2.0 * 1 * desiredFrequency)) - 1.0;
   OCR1A = (uint16_t)(calculatedOCR + 0.5); // rounding with no truncation
 
-  // Re-enable interrupts.
   sei();
 
   Serial.begin(9600);
@@ -27,10 +26,10 @@ void loop() {
     String inputstring = Serial.readStringUntil('\n');
 
       for (int j = 0; j < inputstring.length(); j++) {
-      byte c = inputstring[j]; // do I need to read this backwards?
+      byte c = inputstring[j]; 
       sendFrequency(2125.0); //START BIT
       delay(baudRate); 
-      for (int i = 0; i < 8; i++) { 
+      for (int i = 0; i < 8; i++) { //send characters from LSB to MSB
         int bit = (c >> i) & BIT0;
         if(bit==0){
           sendFrequency(2125.0);
@@ -39,13 +38,13 @@ void loop() {
           sendFrequency(2295.0);
         }
         delay(baudRate);
-        Serial.print(bit); //debug
+        Serial.print(bit);
       }
       sendFrequency(2295.0); // STOP BIT
       delay(baudRate);
       Serial.println();
       Serial.print("***** CHARACTER '");
-      Serial.print((char) c);
+      Serial.print((char) c); //Serial confirmation for debugging
       Serial.println("' SENT *****");
     }
   }
