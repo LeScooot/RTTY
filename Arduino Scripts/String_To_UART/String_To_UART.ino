@@ -27,7 +27,7 @@ void loop() {
     String inputstring = Serial.readStringUntil('\n');
 
       for (int j = 0; j < inputstring.length(); j++) {
-      byte c = inputstring[j];
+      byte c = inputstring[j]; // do I need to read this backwards?
       sendFrequency(2125.0); //START BIT
       delay(baudRate); 
       for (int i = 0; i < 8; i++) { 
@@ -39,13 +39,13 @@ void loop() {
           sendFrequency(2295.0);
         }
         delay(baudRate);
+        Serial.print(bit); //debug
       }
       sendFrequency(2295.0); // STOP BIT
       delay(baudRate);
     }
   }
 }
-
 
 void sendFrequency(float targetFrequency){
   float calculatedOCR = (16000000.0 / (2.0 * 1 * targetFrequency)) - 1.0;
