@@ -1,6 +1,5 @@
 void setup() {
   pinMode(9, OUTPUT);
-  cli();
 
   TCCR1A = (1 << COM1A0);   // Toggle OC1A on compare match
   TCCR1B = (1 << WGM12) | (1 << CS10); // prescaler = 1
@@ -11,7 +10,6 @@ void setup() {
   OCR1A = (uint16_t)(calculatedOCR + 0.5); // rounding with no truncation
 
   // Re-enable interrupts.
-  sei();
 }
 
 void loop() {
