@@ -43,6 +43,10 @@ void loop() {
       }
       sendFrequency(2295.0); // STOP BIT
       delay(baudRate);
+      Serial.println();
+      Serial.print("***** CHARACTER '");
+      Serial.print((char) c);
+      Serial.println("' SENT *****");
     }
   }
 }
