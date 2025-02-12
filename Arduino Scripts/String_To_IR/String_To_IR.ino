@@ -23,7 +23,6 @@ void setup() {
 void sendFrequency(float targetFrequency);
 
 void loop() {
-
   if (Serial.available()) {
     String inputstring = Serial.readStringUntil('\n');
     int totalBits = inputstring.length() * 8;
@@ -53,7 +52,7 @@ void loop() {
     }
     Serial.println();
     Serial.println("*****MESSAGE SENT*****");
-    sendFrequency(0);
+    sendFrequency(2295.0); //Idling
   }
 }
 
