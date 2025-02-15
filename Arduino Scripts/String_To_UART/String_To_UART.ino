@@ -1,5 +1,5 @@
 #define BIT0 0x00000001
-const double baudRate = 1000/45.45;
+const double delayTime = (1.0 / 45.45) * 1000000;  // Convert to microseconds
 
 void setup() {
 
@@ -28,7 +28,7 @@ void loop() {
       for (int j = 0; j < inputstring.length(); j++) {
       byte c = inputstring[j]; 
       sendFrequency(2125.0); //START BIT
-      delay(baudRate); 
+      delayMicroseconds(delayTime); 
       for (int i = 0; i < 8; i++) { //send characters from LSB to MSB
         int bit = (c >> i) & BIT0;
         if(bit==0){
@@ -37,14 +37,14 @@ void loop() {
         else{
           sendFrequency(2295.0);
         }
-        delay(baudRate);
+        delayMicroseconds(delayTime);
         Serial.print(bit);
       }
       sendFrequency(2295.0); // STOP BIT
-      delay(baudRate);
+      delayMicroseconds(delayTime);
       Serial.println();
       Serial.print("***** CHARACTER '");
-      Serial.print((char) c); //Serial confirmation for debugging
+      Serial.print((char) c); //Serial confirmation for debugging - will remove all serial prints for actual deployment
       Serial.println("' SENT *****");
     }
   }
