@@ -1,0 +1,17 @@
+* C:\Users\jeron\OneDrive\Documents\GitHub\RTTY\SPICE\SecondOrderFilter.asc
+R1 N001 P001 82k
+R2 N001 0 680
+C1 N002 N001 10nf
+C2 Vout N001 10nf
+R3 Vout N002 70k
+XU1 N003 N002 +5 -5 Vout LF356
+R4 Vout N003 68k
+R5 N003 0 680
+V1 +5 0 5
+V2 -5 0 -5
+V3 P001 0 AC 1
+* From transimpedance amp
+.ac dec 100 50 82k
+.lib LF356.sub
+.backanno
+.end

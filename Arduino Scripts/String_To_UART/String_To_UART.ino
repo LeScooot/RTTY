@@ -27,8 +27,8 @@ void loop() {
       for (int j = 0; j < inputstring.length(); j++) {
       byte c = inputstring[j]; 
       sendChar(c); 
+    }
   }
-}
 }
 
 void sendChar(byte c){

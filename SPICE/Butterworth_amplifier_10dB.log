@@ -1,6 +1,6 @@
 LTspice 24.0.11 for Windows
 Circuit: * C:\Users\jeron\OneDrive\Documents\GitHub\RTTY\SPICE\Butterworth_amplifier_10dB.asc
-Start Time: Sat Feb  8 21:25:09 2025
+Start Time: Mon Feb 17 12:15:20 2025
 solver = Normal
 Maximum thread count: 16
 tnom = 27
@@ -26,5 +26,5 @@ Gmin = 2.70769e-13
 Gmin = 0
 Gmin stepping succeeded in finding the operating point.
 
-Total elapsed time: 0.329 seconds.
+Total elapsed time: 0.456 seconds.
 
