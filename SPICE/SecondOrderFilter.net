@@ -12,7 +12,7 @@ V2 -5 0 -5
 V3 P001 0 AC 1
 XU2 FilterVout N002 +5 -5 Vout LF356
 R6 N002 0 10k
-R7 Vout N002 100k
+R7 Vout N002 1Meg
 * From transimpedance amp
 .ac dec 100 50 82k
 * To Arduino
