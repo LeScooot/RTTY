@@ -1,17 +1,21 @@
 * C:\Users\jeron\OneDrive\Documents\GitHub\RTTY\SPICE\SecondOrderFilter.asc
 R1 N001 P001 82k
-R2 N001 0 680
-C1 N002 N001 10nf
-C2 Vout N001 10nf
-R3 Vout N002 70k
-XU1 N003 N002 +5 -5 Vout LF356
-R4 Vout N003 68k
-R5 N003 0 680
+R2 N001 0 719
+C1 N003 N001 10nf
+C2 FilterVout N001 10nf
+R3 FilterVout N003 71.9k
+XU1 N004 N003 +5 -5 FilterVout LF356
+R4 FilterVout N004 68k
+R5 N004 0 680
 V1 +5 0 5
 V2 -5 0 -5
 V3 P001 0 AC 1
+XU2 FilterVout N002 +5 -5 Vout LF356
+R6 N002 0 10k
+R7 Vout N002 100k
 * From transimpedance amp
 .ac dec 100 50 82k
+* To Arduino
 .lib LF356.sub
 .backanno
 .end
