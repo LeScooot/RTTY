@@ -1,33 +1,36 @@
-const int input = 9;
-int time = 0;
-int previoustime;
-double period;
-double frequency;
-void CalculateFrequency();
-
+/* FreqMeasure - Example with serial output
+ * http://www.pjrc.com/teensy/td_libs_FreqMeasure.html
+ *
+ * This example code is in the public domain.
+ */
+#include <FreqMeasure.h>
+void readFrequency();
 void setup() {
-  pinMode(input, INPUT);
-  attachInterrupt(digitalPinToInterrupt(input), RISING, CalculateFrequency);
   Serial.begin(9600);
-
+  FreqMeasure.begin();
 }
 
-void loop() {
-  period = time - previoustime;
-  if(period != 0){
-    frequency = 1/period;
-  }
-  else{
-    frequency = 0;
-  }
-  Serial.print("Frequency: ");
-  Serial.println(frequency);
-  Serial.print("Period: ");
-  Serial.println(period);
+double sum=0;
+int count=0;
+
+
+float loop() {
+  readFrequency
+  
 }
 
 
-void CalculateFrequency(){
-  previoustime = time;
-  time = millis();
+float readFrequency(){
+  if (FreqMeasure.available()) {
+    // average several reading together
+    sum = sum + FreqMeasure.read();
+    count = count + 1;
+    if (count > 30) {
+      float frequency = FreqMeasure.countToFrequency(sum / count);
+      Serial.println(frequency);
+      sum = 0;
+      count = 0;
+      return frequency;
+    }
+  }
 }
