@@ -1,6 +1,6 @@
 LTspice 24.0.11 for Windows
 Circuit: * C:\Users\jeron\OneDrive\Documents\GitHub\RTTY\SPICE\SecondOrderFilter.asc
-Start Time: Sun Feb 23 19:29:41 2025
+Start Time: Sun Feb 23 19:44:13 2025
 solver = Normal
 Maximum thread count: 16
 tnom = 27
@@ -27,5 +27,5 @@ Gmin = 2.70769e-13
 Gmin = 0
 Gmin stepping succeeded in finding the operating point.
 
-Total elapsed time: 0.081 seconds.
+Total elapsed time: 0.083 seconds.
 
