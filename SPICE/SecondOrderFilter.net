@@ -10,11 +10,11 @@ R5 N004 0 680
 V1 +5 0 5
 V2 -5 0 -5
 V3 P001 0 AC 1
-XU2 0 N002 +5 -5 Vout LF356
-R N002 FilterVout 1k
-R7 Vout N002 100k
+XU2 FilterVout N002 +5 -5 Vout LF356
+R6 N002 0 10k
+R7 Vout N002 1Meg
 * From transimpedance amp
-.ac dec 100 50 82k
+.ac dec 100 50 100k
 * To Arduino
 .lib LF356.sub
 .backanno
