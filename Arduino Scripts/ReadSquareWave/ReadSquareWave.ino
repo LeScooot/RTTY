@@ -1,21 +1,21 @@
-volatile unsigned int currentCapture = 0;
-volatile unsigned int previousCapture = 0;
-volatile unsigned int captureDiff = 0;
+unsigned int currentCapture = 0;
+unsigned int previousCapture = 0;
+unsigned int captureDiff = 0;
 
 void setup() {
   Serial.begin(9600);
 
   pinMode(8, INPUT);
 
-  TCCR1A = 0;               // Normal mode
+  TCCR1A = 0;               
   TCCR1B = (1 << ICES1) |   // Capture on rising edge
-           (1 << CS11);     // Prescaler = 8,
+           (1 << CS11);     // Prescaler = 8
 
   TIMSK1 = (1 << ICIE1);
 }
 
 ISR(TIMER1_CAPT_vect) {
-  //On every capture event:
+  //On every capture event
   currentCapture = ICR1;
   captureDiff = currentCapture - previousCapture;
   previousCapture = currentCapture;
