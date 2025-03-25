@@ -1,5 +1,5 @@
 #define BIT0 0x00000001
-const double delayTime = (1.0 / 45.45) * 1000000;  // Convert to microseconds
+const double delayTime = (1.0 / 45.45) * 1000;  // Convert to milliseconds
 const double MARK = 2295.0;
 const double SPACE = 2125.0;
 
@@ -28,12 +28,13 @@ void loop() {
       byte c = inputstring[j]; 
       sendChar(c); 
     }
+    Serial.println("SENT1");
   }
 }
 
 void sendChar(byte c){
   sendFrequency(SPACE); //START BIT
-  delayMicroseconds(delayTime);
+  delay(delayTime);
   for (int i = 0; i < 8; i++) { //send characters from LSB to MSB
     int bit = (c >> i) & BIT0;
     if(bit==0){
@@ -42,15 +43,17 @@ void sendChar(byte c){
     else{
       sendFrequency(MARK);
     }
-    delayMicroseconds(delayTime);
+    delay(delayTime);
     Serial.print(bit);
     }
     sendFrequency(MARK); // STOP BIT/IDLE
-    delayMicroseconds(delayTime);
+    delay(delayTime*5);
+    Serial.println("delay");
     Serial.println();
     Serial.print("***** CHARACTER '");
     Serial.print((char) c); //Serial confirmation for debugging - will remove all serial prints for actual deployment
     Serial.println("' SENT *****");
+    //sendFrequency(2400.0);
 }
 
 void sendFrequency(float targetFrequency){
