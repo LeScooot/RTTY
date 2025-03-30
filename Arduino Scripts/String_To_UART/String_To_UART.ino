@@ -28,7 +28,7 @@ void loop() {
       byte c = inputstring[j]; 
       sendChar(c); 
     }
-    Serial.println("SENT1");
+    Serial.println("MESSAGE SENT");
   }
 }
 
@@ -48,7 +48,6 @@ void sendChar(byte c){
     }
     sendFrequency(MARK); // STOP BIT/IDLE
     delay(delayTime*5);
-    Serial.println("delay");
     Serial.println();
     Serial.print("***** CHARACTER '");
     Serial.print((char) c); //Serial confirmation for debugging - will remove all serial prints for actual deployment
